@@ -1,0 +1,38 @@
+docker ps -> to see the running containers
+docker ps -a -> to see all the containers (history)
+docker image ls -> to see the images that are available
+docker pull #image_name -> to pull an image from the docker hub
+docker rmi #image_id -> to remove an image
+docker image prune -> to remove all the dangling images
+docker image rm $(docker image ls -q) -> to remove all the images
+
+docker run -it #image_name -> to run a container in interactive mode
+docker run -> to run a container
+docker run -d -> to run a container in detached mode
+docker run --env <key>=<value> #image_name -> to run a container with an environment variable
+
+docker start #container_id -> to start a container
+docker stop #container_id -> to stop a container
+docker rm #container_id -> to remove a container
+docker container prune -> to remove all the stopped containers
+docker run -p 80:80 -> to run a container and map the port 80 of the container to the port 80 of the host
+docker exec -it #container_id /bin/bash -> to run a command in a running container
+
+docker build -t #image_name . -> to build an image from a Dockerfile
+docker build -t #image_name -f #Dockerfile_name . -> to build an image from a specific Dockerfile
+docker build -t #image_name --build-arg argument=value . -> to build an image with an argument
+docker build -t #image_name --no-cache . -> to build an image without using the cache
+docker build -t #image_name --environment_variable=value . -> to build an image with an environment variable
+
+#Dockerfile
+FROM #base_image
+USER #user
+WORKDIR #working_directory
+ARG argument value
+ENV environment_variable=value
+COPY #source #destination
+RUN #command
+CMD #command
+EXPOSE #port
+
+docker system prune --all --force --volumes
